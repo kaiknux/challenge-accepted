@@ -1,8 +1,65 @@
 .CardContainer {
-    background-color: red;
+
     width: 499px;
     margin: auto;
+    color: white;
+    flex-direction: row;
+    -webkit-box-shadow: 30px 3px 2px 4px rgba(138,138,138,1);
+    -moz-box-shadow:  30px 3px 2px 4px rgba(138,138,138,1);
+    box-shadow: 30px 3px 2px 4px rgba(138,138,138,1);
+
+}
+
+.CardHeaderDate {
+    width: 100%;
+    background-color: white;
+    font-size: 1.2em;
+    color: black;
+    font-weight: bold;
+    display: block;
+    padding: 5px 15px;
+}
+
+.CardWeatherDescription {
+    width: 100%;
+    background-color: white;
+    font-size: 1em;
+    color: black;
+    font-style: none;
+    padding: 3px 15px;
+}
+
+.CardRows {
+    width: 100%;
+    background-color: #eeeeee;
+    font-size: 1.2em;
+    color: black;
+    font-weight: bold;
+    display: block;
+    padding: 0px 15px;
     display: flex;
-    font-size: 3em;
+    justify-content: center;
+}
+
+.Box1 {
+    width: 50px;
+    margin-left: 7px;
+    
+
+}
+
+.Box2 {
+    width: 200px;
+    text-align: center;
+    font-size: 1.5em;
+    color: blue;
+    font-weight: normal;
+}
+.Box3 {
+    width: 200px;
+    text-align: center;
+    font-size: 1.5em;
     color: red;
+    font-weight: normal;
+
 }
