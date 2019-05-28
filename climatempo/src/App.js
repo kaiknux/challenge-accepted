@@ -1,12 +1,11 @@
 import React from 'react';
 import './App.css';
-import CityCard from '../src/components/CityCard/CityCard';
+import AppBlock from '../src/containers/AppBlock/AppBlock'
 
 function App() {
   return (
     <div>
-      <CityCard/>
-      <CityCard/>
+        <AppBlock/>
     </div>
   );
 }
