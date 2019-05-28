@@ -22,7 +22,10 @@ class CityCard extends Component {
                             <div className={classes.Box3}>15°C</div>
                         </div>
                         <div className={classes.CardRows}>              {/* Faixa inferior: chance de chuva e precipitação*/}
-                            Placeholder
+                            <div className={classes.Box1}><img src={ require('../../assets/images/arrowup.JPG') }/></div>
+                            <div className={classes.Box4}>10mm</div>
+                            <div className={classes.Box1}><img src={ require('../../assets/images/arrowdn.JPG') }/></div>
+                            <div className={classes.Box4}>40%</div>
                         </div>
 
                     </div>
