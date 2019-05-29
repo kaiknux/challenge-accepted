@@ -1,55 +1,47 @@
 import React, { Component } from 'react';
 import CityCard from '../../components/CityCard/CityCard';
 
-const axios = require('axios');
-
-// import { LOCALES } from  '../../base/locales.json';
-// import { WEATHER } from '../../base/weather.json';
+const axios = require('axios'); // not using it rn
 
 class AppBlock extends Component {
 
-    async getData() {
-        const res = await axios('https://github.com/kaiknux/challenge-accepted/blob/master/base/locales.json');
-        return await res.json(); // (Or whatever)
-    }
-    constructor(...args) {
-        super(...args);
-        this.state = {data: null};
-    }
-    componentDidMount() {
-        if (!this.state.data) {
-            this.getData().then(data => this.setState({data}))
-                          .catch(err => { /*...handle the error...*/});
-        }
-                                                                console.log(this.res);
-    }
-te
-    // parseChecker = async (val1, val2) => {
-    //     const testLocales = { LOCALES }
-    //     const testWeather = { WEATHER }
+ state = {
+    cities: [],
+    weatherInfo: []
+ }
+    searchData = async () => { 
+        // API call
+        let dataLocale = await fetch('https://api.myjson.com/bins/d0et7');
+        const resLocale = await dataLocale.json();
+        let dataWeather = await fetch('https://api.myjson.com/bins/14iuob');
+        const resWeather = await dataWeather.json();
+        this.parseChecker(resLocale, resWeather);
+    };
 
-    //                                                             console.log(testLocales);
-    //                                                             console.log(testWeather);
-    // };
+    parseChecker = (resLocale, resWeather) => {
+        this.setState()
+                                                                               console.log(resLocale);
+                                                                               console.log(resWeather);
+        if (resLocale !== undefined && resWeather !== undefined) {
+            this.updateFromServer(resLocale, resWeather)
+        } else { console.log('error fetchcing data')}
 
-    // updateFromServer = (val1, val2) => {
-    //     let transitionObject = [...res.list]
-    //     const updatedArray = transitionObject.filter(function(city) {
-    //         return cities.indexOf(city);
-    //       });
-    //                                                         // console.log(updatedArray);
-    //       this.setState({cities: updatedArray});
-    //                                                         // console.log(this.state.cities[1].sys.country);
-                                                            
-    //                                                         console.log(this.state.cities);
-    // };
+    };
+
+    updateFromServer = (resLocale, resWeather) => {
+            this.setState({cities: resLocale});
+            this.setState({weatherInfo: resWeather})
+                                                                                console.log(this.state);
+    };
 
     render() {
+
     return (
         <div>
-        <CityCard/>
-        <CityCard/>
-        <button onClick={this.parseChecker}>Check</button>
+            
+        <CityCard item1={this.state.cities[0]} item2={this.state.weatherInfo[0]}/>
+        <CityCard {...this.state.cities[1]} {...this.state.weatherInfo[1]}/>
+        <button onClick={this.searchData}>Check</button>
         </div>
     );
 }};

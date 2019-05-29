@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classes from '../CityCard/CityCard.css';
 
-class CityCard extends Component {
+function CityCard (props) {
 
-
-
-    render() {
         return (
                 <div className={classes.CardContainer}>                 {/* A caixa externa */}
                     <div className={classes.CardHeaderDate}>            {/* Faixa superior com a data */}
-                        27/05/2019
+                         {props}
                     </div>
                     <div className={classes.CardWeatherDescription}>    {/* Segunda faixa, com descrições do clima*/}
                         Céu claro com núvens sendo portanto chamado parcialmente nublado.
@@ -31,7 +28,6 @@ class CityCard extends Component {
                     </div>
                 </div>
         );
-    }
 };
 
 export default CityCard;
