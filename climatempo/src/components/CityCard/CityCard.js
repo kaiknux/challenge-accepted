@@ -6,7 +6,7 @@ function CityCard (props) {
         return (
                 <div className={classes.CardContainer}>                 {/* A caixa externa */}
                     <div className={classes.CardHeaderDate}>            {/* Faixa superior com a data */}
-                         {props}
+                         
                     </div>
                     <div className={classes.CardWeatherDescription}>    {/* Segunda faixa, com descrições do clima*/}
                         Céu claro com núvens sendo portanto chamado parcialmente nublado.
