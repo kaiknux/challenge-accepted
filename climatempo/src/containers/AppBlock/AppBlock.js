@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import CityCard from '../../components/CityCard/CityCard';
 
+import classes from '../AppBlock/AppBlock.css';
+
 class AppBlock extends Component {
 
- state = {  cityOneInfo: '',
-            cityTwoInfo: '',
-            cityOneWeekWeather: '',
-            cityTwoWeekWeather: '',
+ state = {  
+            cityName: '',
             todayDate: '',
             todayText: '',
             minTemperature: '',
@@ -14,6 +14,7 @@ class AppBlock extends Component {
             rainProbability: '',
             rainPrecipitation: '',
             appear: false,
+            showCities: null,
 }
     searchData = async () => { 
         // API call
@@ -50,20 +51,18 @@ class AppBlock extends Component {
             return this.organizeWeekWeather(dataHandled)
         });
         const cityInfo = this.cityInfoEngine(resWeather);
-        const cityOneWeekWeather = weekDaysWeather[0];
+        const cityOneWeekWeather = weekDaysWeather[0]; // é aqui que eu tenho que substituir pelo objeto do search!!!
         const cityTwoWeekWeather = weekDaysWeather[1];
-        const cityOneInfo = cityInfo[0];
+        const cityOneInfo = cityInfo[0].name;
         const cityTwoInfo = cityInfo[1];
-        this.stateChangeHandler(cityOneWeekWeather, cityTwoWeekWeather, cityOneInfo, cityTwoInfo);
+        this.stateChangeHandler(cityOneWeekWeather, cityOneInfo);
         // this.setState({cityOneInfo: cityOneInfo})
         // this.setState({cityTwoInfo: cityTwoInfo})
-        this.setState({cityOneWeekWeather: cityOneWeekWeather})
         // this.setState({cityTwoWeekWeather: cityTwoWeekWeather})
-                                                                                console.log('state updated:');
-                                                                                console.log(this.state);
     };
 
-    stateChangeHandler = (cityOneWeekWeather, cityTwoWeekWeather, cityOneInfo, cityTwoInfo) => {
+    stateChangeHandler = (cityOneWeekWeather, cityOneInfo) => {
+        // first box item
         const todayDate = cityOneWeekWeather[0].date;
         this.setState({todayDate: todayDate});
         const todayText = cityOneWeekWeather[0].text;
@@ -89,7 +88,12 @@ class AppBlock extends Component {
         this.setState({rainProbability1a: rainProbability1a});
         const rainPrecipitation1a = cityOneWeekWeather[1].rain.precipitation;
         this.setState({rainPrecipitation1a: rainPrecipitation1a});
-        this.setState({appear: true})
+        // state for the pop up with the city boxes
+        this.setState({showCities: true});
+        // title (name of the city)
+        const cityName = cityOneInfo;
+        this.setState({cityName: cityName});
+                                                                                console.log('state updated:');
                                                                                 console.log(this.state);
 
     };
@@ -101,31 +105,41 @@ class AppBlock extends Component {
         // obj[i].rainprecipitation = resWeather[i].weather[0].rain.precipitation,
 
 
-    render() 
-        let jsx =  <div>
-            <CityCard date={this.state.todayDate}
-                text={this.state.todayText}
-                tempmax={this.state.maxTemperature}
-                tempmin={this.state.minTemperature}
-                rainprob={this.state.rainProbability}
-                rainprec={this.state.rainPrecipitation}
-            />
-            <CityCard date={this.state.todayDate1a}
-                text={this.state.todayText1a}
-                tempmax={this.state.maxTemperature1a}
-                tempmin={this.state.minTemperature1a}
-                rainprob={this.state.rainProbability1a}
-                rainprec={this.state.rainPrecipitation1a}
-            />
-        </div>;
 
-    return (
-        <div>
-        {this.showUp}
+    myComponents = () => {
+            return  
+    };
+
+    render() { 
+        let cities = null;
+        if (this.state.showCities) {
+            cities = (
+                <div className={classes.AppBox}> 
+                    <h1>{this.state.cityName}</h1>
+                <CityCard date={this.state.todayDate}
+                    text={this.state.todayText}
+                    tempmax={this.state.maxTemperature}
+                    tempmin={this.state.minTemperature}
+                    rainprob={this.state.rainProbability}
+                    rainprec={this.state.rainPrecipitation}
+                />
+                <CityCard date={this.state.todayDate1a}
+                    text={this.state.todayText1a}
+                    tempmax={this.state.maxTemperature1a}
+                    tempmin={this.state.minTemperature1a}
+                    rainprob={this.state.rainProbability1a}
+                    rainprec={this.state.rainPrecipitation1a}
+                />
+            </div>
+            )
+        };
+
+    return ( <div>
+        {cities}
         <button onClick={this.searchData}>Check</button>
         </div>
-        };
-    );
-}};
+    )
+}
+};
 
 export default AppBlock;
