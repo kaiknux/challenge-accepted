@@ -1,15 +1,12 @@
 import React from 'react';
 import './App.css';
-import AppBlock from '../src/containers/AppBlock/AppBlock';
-import CitySearch from '../src/containers/CitySearch/CitySearch';
-import ImportedSolution from './containers/CitySearch/ImportedSolution';
+import Panel from '../src/containers/CitySearch/ClimaTempo/Panel/Panel';
+
 
 function App() {
   return (
     <div>
-        <AppBlock/>
-        <CitySearch/>
-        <ImportedSolution/>
+        <Panel/>
     </div>
   );
 }

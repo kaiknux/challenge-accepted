@@ -1,0 +1,27 @@
+.Headerf1 {
+    height: 56px;
+    width: 100%;
+    background-color: blue;
+    justify-content: center;
+    text-align: center;
+}
+
+.Climatempo {
+    height: 56px;
+    width: 100%;
+    padding: 20px 0px 0px 0px;
+    background-color: #1564c0;
+    justify-content: center;
+    text-align: center;
+}
+
+.Logoarea {
+    height: 112px;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+}
