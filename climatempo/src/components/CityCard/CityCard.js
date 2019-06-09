@@ -19,9 +19,9 @@ function CityCard (props) {
                             <div className={classes.Box3}>{props.tempmin}</div>
                         </div>
                         <div className={classes.CardRows}>              {/* Faixa inferior: chance de chuva e precipitação*/}
-                            <div className={classes.Box1}><img src={ require('../../assets/images/arrowup.JPG') }/></div>
+                            <div className={classes.Box1}><img src={ require('../../assets/images/raindrop-close-up.png') }/></div>
                             <div className={classes.Box4}>{props.rainprec}</div>
-                            <div className={classes.Box1}><img src={ require('../../assets/images/arrowdn.JPG') }/></div>
+                            <div className={classes.Box1}><img src={ require('../../assets/images/protection-symbol-of-opened-umbrella-silhouette-under-raindrops.png') }/></div>
                             <div className={classes.Box4}>{props.rainprob}</div>
                         </div>
 
