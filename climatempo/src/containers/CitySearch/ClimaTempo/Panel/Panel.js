@@ -14,9 +14,10 @@ class Panel extends Component {
     }
      
     getWeather = async (event) => {
-        event.preventDefault();
-        const { city } = event.target.elements;
-        const cityValue = city.value;
+        // event.preventDefault();
+        // const { city } = event.target.elements;
+        // const cityValue = city.value;
+        const cityValue = event;
         let res = await axios.get('https://api.myjson.com/bins/14iuob');
         let data = await res.data;
         const newData = [...data];
@@ -31,9 +32,11 @@ class Panel extends Component {
             this.setState({Escondido: true})
          }
     }
-
+    functionHandler (oioioi) {
+        this.getWeather(oioioi)
+    }
     render() {
-        let info = <p>No city was selected</p>
+        let info = <div className={classes.Text}><p>No city was selected</p></div>
         if (this.state.Escondido) {
             info = 
             <div >
@@ -62,6 +65,7 @@ class Panel extends Component {
             <div>
                 <WeatherForm
                         getWeather={this.getWeather}
+                        functionHandler={this.functionHandler}
                 />
                 {info}
                 

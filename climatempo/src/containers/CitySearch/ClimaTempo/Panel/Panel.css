@@ -1,3 +1,8 @@
 .TextCenter {
     text-align: center;
 }
+
+  .Text {
+    margin: auto;
+    width: 40%;
+  }
